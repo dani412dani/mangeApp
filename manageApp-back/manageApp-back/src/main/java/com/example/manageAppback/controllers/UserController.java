@@ -3,10 +3,7 @@ package com.example.manageAppback.controllers;
 import com.example.manageAppback.models.User;
 import com.example.manageAppback.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -20,5 +17,15 @@ public class UserController {
     @GetMapping("")
     public List<User> getAll() {
         return this.userService.getAll();
+    }
+
+    @GetMapping("/{email}")
+    public User getByEmail(@PathVariable String email) {
+        return this.userService.getByEmail(email);
+    }
+
+    @PostMapping("")
+    public void addUser(@RequestBody User newUser) {
+        this.userService.addUser(newUser);
     }
 }

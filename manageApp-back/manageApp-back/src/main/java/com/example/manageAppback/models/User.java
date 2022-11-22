@@ -10,7 +10,8 @@ public class User {
     @Id
     @Column(name = "user_id")
     @JsonProperty
-    private int id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
 
     @Column(name = "first_name")
     @JsonProperty

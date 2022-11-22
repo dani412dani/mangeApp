@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import com.example.manageAppback.repositories.UserRepository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class UserService {
@@ -14,5 +15,13 @@ public class UserService {
 
     public List<User> getAll() {
         return this.userRepository.findAll();
+    }
+
+    public User getByEmail(String email) {
+        return this.userRepository.findByEmail(email);
+    }
+
+    public void addUser(User newUser) {
+        this.userRepository.save(newUser);
     }
 }
